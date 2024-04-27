@@ -1,0 +1,36 @@
+.nav-menu-container {
+  list-style: none;
+}
+
+.listitem:hover, .hamburger-menu:hover {
+ color: black;
+ cursor: pointer;
+}
+
+.page-container {
+  width: 100%;
+  height: calc(100% - 64px);
+  text-align: center;
+}
+
+.page-title {
+  font-size: 28px;
+}
+
+.content-container {
+  margin-top: 50px;
+  width: 90%;
+}
+
+.button-container {
+  min-width: 360px;
+}
+
+.button {
+  height: 40px;
+  width: 170px;
+  font-size: 16px;
+}
+
+
+

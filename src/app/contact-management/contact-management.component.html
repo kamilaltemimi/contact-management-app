@@ -1,0 +1,56 @@
+<mat-toolbar color="primary" fxLayout fxLayoutAlign="center center">
+  <div fxFlex="90%" fxLayout fxLayoutAlign="space-between">
+    <div fxLayout="column" fxLayoutAlign="center">
+      <span>LOGO</span>
+    </div>
+    <div fxLayout fxLayoutAlign="center center">
+      <ul fxHide.lt-sm class="nav-menu-container" role="list" fxLayout fxLayoutGap="30px">
+        <li (click)="chooseTab(0)" class="listitem" role="listitem">
+          Home
+        </li>
+        <li (click)="chooseTab(1)" class="listitem" role="listitem">
+          Contact list
+        </li>
+        <li (click)="chooseTab(2)" class="listitem" role="listitem">
+          Add contact
+        </li>
+      </ul>
+      <mat-icon class="hamburger-menu" fxHide.gt-xs [matMenuTriggerFor]="menu">menu</mat-icon>
+      <mat-menu #menu="matMenu">
+        <button (click)="chooseTab(0)" mat-menu-item>Home</button>
+        <button (click)="chooseTab(1)"  mat-menu-item>Contact list</button>
+        <button (click)="chooseTab(2)" mat-menu-item>Add contact</button>
+      </mat-menu>
+    </div>
+  </div>
+</mat-toolbar>
+
+<app-contact-list *ngIf="currentTab === 1"></app-contact-list>
+<app-add-contact (onSubmitForm)="onSubmittedForm($event)" *ngIf="currentTab === 2"></app-add-contact>
+
+<div class="page-container" fxLayout fxLayoutAlign="center" *ngIf="currentTab === 0">
+  <div fxLayout="column" fxLayoutAlign="top center" class="content-container">
+    <div fxLayout fxLayoutAlign="center">
+      <h1 class="page-title">Welcome to the contact management application</h1>
+    </div>
+    <div class="button-container" fxLayout fxLayoutAlign="space-between center">
+      <button (click)="chooseTab(1)" class="button" mat-flat-button color="accent">
+        <mat-icon>
+            <span>
+              list_alt
+            </span>
+        </mat-icon>
+        Contact List
+      </button>
+      <button (click)="chooseTab(2)" class="button" mat-flat-button color="accent">
+        <mat-icon>
+          <span class="material-symbols-outlined">
+            add_box
+          </span>
+        </mat-icon>
+        Add Contact
+      </button>
+    </div>
+  </div>
+</div>
+

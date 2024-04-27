@@ -1,0 +1,13 @@
+.page-container {
+  height: calc(100% - 64px);
+  width: 100%;
+}
+
+.content-container {
+  margin-top: 50px;
+}
+
+mat-hint, mat-error {
+  margin-left: -15px;
+}
+

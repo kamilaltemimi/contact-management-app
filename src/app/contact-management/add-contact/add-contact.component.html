@@ -1,0 +1,71 @@
+<div fxLayout fxLayoutAlign="center" class="page-container">
+  <div class="content-container" fxFlex="90%" fxFlex.gt-xs="500px">
+    <form fxLayout="column" fxLayoutGap="20px" [formGroup]="addContactForm" (ngSubmit)="submitForm()">
+
+      <mat-form-field>
+        <mat-label for="firstName">First name</mat-label>
+        <input 
+        matInput 
+        formControlName="firstName"
+        #firstName
+        maxlength="20">
+        <mat-hint>length: {{firstName.value.length}} / 20</mat-hint>
+        <mat-error>Please enter first name!</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label for="lastName">Last name</mat-label>
+        <input 
+        matInput
+        formControlName="lastName"
+        #lastName
+        maxlength="20">
+        <mat-hint>length: {{lastName.value.length}} / 20</mat-hint>
+        <mat-error>Please enter last name!</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label for="email">Email</mat-label>
+        <input 
+        matInput
+        formControlName="email"
+        type="email"
+        #email>
+        <mat-hint>Example: example@example.com</mat-hint>
+        <mat-error>Please enter valid email!</mat-error>
+      </mat-form-field>
+
+      <div fxLayout fxLayoutGap="20px">
+        <mat-form-field fxFlex="70%">
+          <mat-label for="phoneNumber">Phone number</mat-label>
+          <input 
+          matInput 
+          formControlName="phoneNumber" 
+          #phoneNumber
+          minlength="9"
+          maxlength="9">
+          <mat-hint>Required 9 digits: {{phoneNumber.value.length}} / 9</mat-hint>
+          <mat-error>Please enter 9 digits! {{phoneNumber.value.length}} / 9</mat-error>
+        </mat-form-field>
+
+        <mat-form-field fxFlex="30%">
+          <mat-label for="age">Age</mat-label>
+          <mat-select
+          formControlName="age"
+          type="number">
+            <mat-option
+            *ngFor="let option of ageRange"
+            value="option">
+            {{option}}
+            </mat-option>
+          </mat-select>
+          <mat-hint>Select age</mat-hint>
+          <mat-error>Please select age!</mat-error>
+        </mat-form-field>
+      </div>
+      
+      
+      <button [disabled]="!addContactForm.valid" mat-flat-button color="warn" type="submit">Submit</button>
+    </form>
+  </div>
+</div>
