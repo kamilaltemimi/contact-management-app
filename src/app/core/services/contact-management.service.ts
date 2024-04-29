@@ -19,7 +19,7 @@ export class ContactManagementService {
   }
 
   getContacts(): Observable<Contact[]> {
-    return this.http.get<Contact[]>(this.URL + '.json').pipe(map(data => {
+    return this.http.get<{[key:string]:Contact}>(this.URL + '.json').pipe(map(data => {
       const contacts: Contact[] = []
       for (const key in data) {
         let contact: Contact = {...data[key], id: key}
