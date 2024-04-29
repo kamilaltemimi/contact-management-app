@@ -30,13 +30,12 @@ export class ContactListComponent implements OnInit {
   }
 
   deleteContact(id: string): void {
-    this.contactManagementService.deleteContact(id).subscribe(() => 
-      this.getContacts())
+    this.contactManagementService.deleteContact(id).subscribe(() => this.getContacts())
   }
   
   getContacts(): void {
     this.contactManagementService.getContacts().subscribe(data => { 
-      this.contactTable = new MatTableDataSource(data)
+      this.contactTable = new MatTableDataSource<Contact>(data)
       this.contactTable.paginator = this.paginator
       this.contactTable.sort = this.sort
     })
