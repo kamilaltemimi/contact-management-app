@@ -21,7 +21,7 @@ export class AddContactComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.ageSelect()
+    this.setAgeRange()
     this.addContactForm = this.fb.group({
       firstName: ['', [Validators.required, Validators.maxLength(20)]],
       lastName: ['', Validators.required],
@@ -35,12 +35,11 @@ export class AddContactComponent implements OnInit {
     this.contactManagementService.addContact(this.addContactForm.value).subscribe(() => this.onSubmitForm.emit(1))
   }
 
-  ageSelect(): void {
-    let ageNumbers = []
+  setAgeRange(): void {
+    let ageRange = []
     for (let i = 1; i < 100; i++) {
-      ageNumbers.push(i)
-    }
-    this.ageRange = ageNumbers
+      ageRange.push(i)
+    } this.ageRange = ageRange
   }
 
 }

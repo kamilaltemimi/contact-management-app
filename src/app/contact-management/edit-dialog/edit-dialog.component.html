@@ -1,39 +1,39 @@
-<div fxLayout fxLayoutAlign="center" class="page-container">
-  <div class="content-container" fxFlex="90%" fxFlex.gt-xs="500px">
-    <form fxLayout="column" fxLayoutGap="20px" [formGroup]="addContactForm" (ngSubmit)="submitForm()">
+<div class="container" fxLayout fxLayoutAlign="center center">
+  <div class="content-container" fxLayout fxLayoutAlign="center center">
+    <form [formGroup]="contactData" fxLayout="column" fxLayoutGap="20px" fxFlex="90%" (ngSubmit)="submitForm()">
 
       <mat-form-field>
         <mat-label for="firstName">First name</mat-label>
         <input 
-        matInput 
-        formControlName="firstName"
-        #firstName
-        maxlength="20">
-        <mat-hint>length: {{firstName.value.length}} / 20</mat-hint>
-        <mat-error>Please enter first name!</mat-error>
+          matInput
+          formControlName="firstName"
+          #firstName
+          maxlength="20">
+          <mat-hint>length: {{firstName.value.length}} / 20</mat-hint>
+          <mat-error>Please enter first name!</mat-error>
       </mat-form-field>
 
       <mat-form-field>
-        <mat-label for="lastName">Last name</mat-label>
+        <mat-label for="lasttName">Last name</mat-label>
         <input 
-        matInput
-        formControlName="lastName"
-        #lastName
-        maxlength="20">
-        <mat-hint>length: {{lastName.value.length}} / 20</mat-hint>
-        <mat-error>Please enter last name!</mat-error>
+          matInput
+          formControlName="lastName"
+          #lastName
+          maxlength="20">
+          <mat-hint>length: {{lastName.value.length}} / 20</mat-hint>
+          <mat-error>Please enter last name!</mat-error>
       </mat-form-field>
 
       <mat-form-field>
         <mat-label for="email">Email</mat-label>
-        <input 
+        <input
         matInput
         formControlName="email"
-        type="email"
-        #email>
+        #email
+        type="email">
         <mat-hint>Example: example@example.com</mat-hint>
-        <mat-error *ngIf="addContactForm.get('email')?.hasError('required')">Please enter email address!</mat-error>
-        <mat-error *ngIf="addContactForm.get('email')?.hasError('email')">Please enter valid email!</mat-error>
+        <mat-error *ngIf="contactData.get('email')?.hasError('required')">Please enter email address!</mat-error>
+        <mat-error *ngIf="contactData.get('email')?.hasError('email')">Please enter valid email address!</mat-error>
       </mat-form-field>
 
       <div fxLayout fxLayoutGap="20px">
@@ -53,6 +53,7 @@
           <mat-label for="age">Age</mat-label>
           <mat-select
           formControlName="age"
+          #age
           type="number">
             <mat-option
             *ngFor="let option of ageRange"
@@ -66,7 +67,7 @@
       </div>
       
       
-      <button [disabled]="!addContactForm.valid" mat-flat-button color="warn" type="submit">Submit</button>
+      <button mat-dialog-close [disabled]="!contactData.valid" mat-flat-button color="warn" type="submit">Submit</button>
     </form>
   </div>
 </div>

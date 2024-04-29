@@ -17,12 +17,18 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { HttpClientModule } from '@angular/common/http';
 import { ContactManagementService } from '../core/services/contact-management.service';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatDialogModule } from '@angular/material/dialog';
+import { EditDialogComponent } from './edit-dialog/edit-dialog.component';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [
     ContactManagementComponent,
     AddContactComponent,
-    ContactListComponent
+    ContactListComponent,
+    EditDialogComponent
   ],
   imports: [
     CommonModule,
@@ -38,7 +44,11 @@ import { ContactManagementService } from '../core/services/contact-management.se
     MatInputModule,
     MatSelectModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatDialogModule,
+    MatSortModule
   ],
   providers: [
     ContactManagementService
